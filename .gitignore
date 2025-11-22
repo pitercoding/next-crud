@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# others
+.idea/
+.firebase/
+firestore-debug.log
+ui-debug.log
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
