@@ -1,7 +1,13 @@
+import Layout from "@/components/Layout"
+
 export default function Home() {
   return(
-    <div className="flex h-screen justify-center items-center bg-gradient-to-r from-purple-500 via-yellow-600 to-blue-600">
-      <span className="text-4xl">Tailwind Funionando!</span>
+    <div className={`
+    flex h-screen justify-center items-center bg-linear-to-r from-blue-600 to-purple-500 text-white
+    `}>
+      <Layout titulo="Cadastro Simples">
+        <span>Conteúdo</span>
+      </Layout>
     </div>
   ) 
 }
