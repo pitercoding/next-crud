@@ -2,6 +2,7 @@ interface BotaoProps {
   cor?: "green" | "blue" | "gray"
   className?: string
   children: React.ReactNode
+  onClick?: () => void
 }
 
 const cores: Record<Required<BotaoProps>["cor"], string> = {
@@ -14,7 +15,7 @@ export default function Botao(props: BotaoProps) {
   const cor = props.cor ?? "gray"
 
   return (
-    <button
+    <button onClick={props.onClick}
       className={`
         bg-linear-to-r
         ${cores[cor]}
