@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div
       className={`
-      flex h-screen justify-center items-center 
+      flex min-h-screen justify-center items-center 
       bg-linear-to-r from-blue-600 to-purple-500 text-white
       `}
     >
@@ -33,11 +33,13 @@ export default function Home() {
                 Novo Cliente
               </Botao>
             </div>
-            <Tabela
-              clientes={clientes}
-              clienteSelecionado={selecionarCliente}
-              clienteExcluido={excluirCliente}
-            />
+            <div className="max-h-[70vh] overflow-y-auto overflow-x-auto">
+              <Tabela
+                clientes={clientes}
+                clienteSelecionado={selecionarCliente}
+                clienteExcluido={excluirCliente}
+              />
+            </div>
           </>
         ) : (
           <Formulario
