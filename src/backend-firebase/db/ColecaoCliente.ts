@@ -1,9 +1,26 @@
-import firebase from "../config";
+"use client";
+
+import { db } from "../config";
+import {
+  collection,
+  addDoc,
+  doc,
+  setDoc,
+  deleteDoc,
+  getDocs,
+  getDoc,
+  CollectionReference,
+  DocumentData,
+  QueryDocumentSnapshot,
+  SnapshotOptions,
+  FirestoreDataConverter,
+} from "firebase/firestore";
 import Cliente from "../../core/Cliente";
 import ClienteRepositorio from "../../core/ClienteRepositorio";
 
 export default class ColecaoCliente implements ClienteRepositorio {
-  #conversor = {
+  // Conversor tipado para Firebase modular
+  #conversor: FirestoreDataConverter<Cliente> = {
     toFirestore(cliente: Cliente) {
       return {
         nome: cliente.nome,
@@ -12,42 +29,48 @@ export default class ColecaoCliente implements ClienteRepositorio {
     },
 
     fromFirestore(
-      snapshot: firebase.firestore.QueryDocumentSnapshot,
-      options: firebase.firestore.SnapshotOptions
+      snapshot: QueryDocumentSnapshot<DocumentData>,
+      options: SnapshotOptions
     ): Cliente {
       const dados = snapshot.data(options)!;
       return new Cliente(dados.nome, dados.idade, snapshot.id);
     },
   };
 
-  private colecao() {
-    return firebase
-      .firestore()
-      .collection("clientes")
-      .withConverter(this.#conversor);
+  // Coleção com conversor
+  private colecao(): CollectionReference<Cliente> {
+    if (!db) throw new Error("Firebase não inicializado! Use apenas no cliente.");
+    return collection(db, "clientes").withConverter(this.#conversor);
   }
 
+  // Salvar cliente
   async salvar(cliente: Cliente): Promise<Cliente> {
+    const colecaoRef = this.colecao();
+
     if (cliente?.id) {
-      await this.colecao().doc(cliente.id).set(cliente);
+      // Atualizar
+      const docRef = doc(colecaoRef, cliente.id);
+      await setDoc(docRef, cliente);
       return cliente;
     } else {
-      const docRef = await this.colecao().add(cliente);
-      const doc = await docRef.get();
-      return doc.data()!;
+      // Criar novo
+      const docRef = await addDoc(colecaoRef, cliente);
+
+      const snapshot = await getDoc(docRef);
+      return snapshot.data()!; // já vem convertido pelo converter
     }
   }
 
+  // Excluir cliente
   async excluir(cliente: Cliente): Promise<void> {
-    return this.colecao().doc(cliente.id!).delete();
+    const docRef = doc(this.colecao(), cliente.id!);
+    await deleteDoc(docRef);
   }
 
+  // Buscar todos
   async obterTodos(): Promise<Cliente[]> {
-    const query = await this.colecao().get();
-    return (
-      query.docs.map((doc: firebase.firestore.QueryDocumentSnapshot<Cliente>) =>
-        doc.data()
-      ) ?? []
-    );
+    const colecaoRef = this.colecao();
+    const querySnapshot = await getDocs(colecaoRef);
+    return querySnapshot.docs.map(doc => doc.data());
   }
 }
