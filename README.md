@@ -6,13 +6,15 @@ O sistema permite **cadastrar, editar, excluir e listar clientes**, com persist�
 
 Foi totalmente modernizado, utilizando **hooks personalizados**, **componentes reutilizáveis** e **layout responsivo**, garantindo boa experiência em desktop e mobile.
 
+[Acesse Aqui](next-crud-firebasedb.vercel.app)
+
 ---
 
 ## 🎯 Motivação do Projeto
 
 O projeto foi criado como estudo prático para:
 
-- Aprender integração do **Next.js** com **Firebase v8**.
+- Aprender integração do **Next.js** com **Firebase v9**.
 - Implementar **CRUD completo** (Create, Read, Update, Delete) com Firestore.
 - Utilizar **React Hooks** personalizados para lógica de estado e visibilidade.
 - Criar uma interface **responsiva** e limpa com **Tailwind CSS**.
@@ -143,7 +145,7 @@ next-crud/
 
 - **Next.js 16** – Framework React moderno.
 - **React 19** – Biblioteca de componentes.
-- **Firebase v8.8** – Firestore para persistência de dados.
+- **Firebase v12** – Firestore para persistência de dados.
 - **Tailwind CSS 4** – Estilização responsiva e moderna.
 - **TypeScript 5** – Tipagem estática.
 - **PostCSS** – Pré-processamento de CSS.
@@ -194,6 +196,7 @@ Desenvolvido por [**pitercoding**](https://github.com/pitercoding)
 
 ## 📄 Licença
 Este projeto está licenciado sob a **MIT License**.
+
 
 
 
