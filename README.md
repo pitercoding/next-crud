@@ -1,4 +1,10 @@
-# 📝 Next.js CRUD com Firebase
+<h1 align="center">⚛️🔥 Next.js CRUD com Firebase (PT-BR)</h1>
+
+<p align="center">
+  🌎 <strong>Languages:</strong><br>
+  <a href="README.md">🇧🇷 Português</a> |
+  <a href="README.en.md">🇺🇸 English</a>
+</p>
 
 Este é um projeto de **Cadastro de Clientes** desenvolvido com **Next.js**, **Tailwind CSS** e **Firebase Firestore**.  
 
@@ -191,11 +197,15 @@ Contribuições são bem-vindas!
 - Envie para a branch principal (`git push origin minha-feature`).
 - Abra um Pull Request.
 
-## 👨‍💻 Autor
-Desenvolvido por [**pitercoding**](https://github.com/pitercoding)
+## 📜 Licença
+Este projeto está licenciado sob a **licença MIT**.
 
-## 📄 Licença
-Este projeto está licenciado sob a **MIT License**.
+## 🧑‍💻 Autor
+
+**Piter Gomes** — Aluno de Ciências da Computação (5º Semestre) & Desenvolvedor Full-Stack
+
+📧 [Email](mailto:piterg.bio@gmail.com) | 💼 [LinkedIn](https://www.linkedin.com/in/piter-gomes-4a39281a1/) | 💻 [GitHub](https://github.com/pitercoding) | 🌐 [Portfolio](https://portfolio-pitergomes.vercel.app/)
+
 
 
 
